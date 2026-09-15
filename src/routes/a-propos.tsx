@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Award, Compass, Handshake, Phone, ShieldCheck, UserRound } from "lucide-react";
+import { Award, Compass, Handshake, MapPin, Phone, ShieldCheck, UserRound } from "lucide-react";
 import missionImage from "@/assets/import-distribution.jpg";
+import chiffresImage from "@/assets/casablanca-business.jpg";
+import bureauImage from "@/assets/bureau-conseil.jpg";
 import { company } from "@/data/company";
 import { team, timeline, values } from "@/data/team";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/Cta";
-import { Reveal, TiltCard } from "@/components/site/motion-primitives";
+import { Counter, Reveal, TiltCard } from "@/components/site/motion-primitives";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
@@ -186,6 +188,167 @@ function About() {
                       {company.phone}
                     </a>
                   </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SOPHIACO EN CHIFFRES */}
+      <section className="relative overflow-hidden">
+        <img
+          src={chiffresImage}
+          alt="Quartier d'affaires de Casablanca"
+          width={1408}
+          height={912}
+          loading="lazy"
+          className="absolute inset-0 size-full object-cover"
+        />
+        <div className="absolute inset-0 gradient-navy opacity-[0.86]" aria-hidden />
+        <div className="absolute inset-0 bg-grid opacity-15" aria-hidden />
+        <div className="shell section-y relative">
+          <Reveal>
+            <p className="eyebrow text-sky-pale">Sophiaco en bref</p>
+            <h2 className="mt-3 max-w-2xl text-3xl text-white sm:text-4xl">
+              Une entreprise casablancaise, ancrée dans le tissu médical marocain
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                value: new Date().getFullYear() - company.foundedYear,
+                prefix: "+",
+                suffix: "",
+                label: "années d'activité",
+                text: `Depuis ${company.foundedYear}, sans interruption.`,
+              },
+              {
+                value: 4,
+                prefix: "",
+                suffix: "",
+                label: "familles de produits",
+                text: "Dentaire, médical, laboratoire, hygiène.",
+              },
+              {
+                value: 1,
+                prefix: "",
+                suffix: "",
+                label: "interlocuteur dédié",
+                text: `${company.contactName}, votre contact direct.`,
+              },
+              {
+                value: 0,
+                prefix: "",
+                suffix: "",
+                label: "Tout le Maroc",
+                text: "Bureaux à Casablanca, service national.",
+              },
+            ].map((s, i) => (
+              <Reveal key={s.label} delay={i * 0.1}>
+                <p className="font-display text-4xl font-bold text-white">
+                  {s.value > 0 ? (
+                    <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
+                  ) : (
+                    s.label
+                  )}
+                </p>
+                {s.value > 0 ? (
+                  <p className="mt-1 text-sm font-semibold text-sky-pale">{s.label}</p>
+                ) : null}
+                <p className="mt-3 text-sm text-sky-pale/80">{s.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ENGAGEMENTS */}
+      <section className="section-y bg-background">
+        <div className="shell grid items-center gap-14 lg:grid-cols-2">
+          <Reveal>
+            <p className="eyebrow">Nos engagements</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl">
+              Ce que vous pouvez attendre de nous, concrètement
+            </h2>
+            <ul className="mt-8 space-y-6">
+              {[
+                {
+                  title: "Une réponse rapide",
+                  text: "Toute demande reçue pendant les heures d'ouverture est prise en charge dans la journée ou le jour ouvré suivant.",
+                },
+                {
+                  title: "Un conseil honnête",
+                  text: "Si un équipement n'est pas adapté à votre pratique ou à votre budget, nous le disons et proposons une alternative.",
+                },
+                {
+                  title: "Une traçabilité claire",
+                  text: "Références, provenance et conditions de livraison sont précisées dans chaque proposition écrite.",
+                },
+                {
+                  title: "La continuité",
+                  text: "Nous anticipons les besoins récurrents en consommables pour éviter les ruptures en cours d'activité.",
+                },
+              ].map((e, i) => (
+                <Reveal as="li" key={e.title} delay={0.08 * i}>
+                  <span className="flex gap-4">
+                    <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-sky-pale/60 font-display text-sm font-bold text-navy">
+                      {i + 1}
+                    </span>
+                    <span>
+                      <span className="block font-display font-bold text-navy">{e.title}</span>
+                      <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
+                        {e.text}
+                      </span>
+                    </span>
+                  </span>
+                </Reveal>
+              ))}
+            </ul>
+          </Reveal>
+
+          <div className="overflow-hidden rounded-3xl shadow-lift">
+            <img
+              src={bureauImage}
+              alt="Salle de réunion des bureaux Sophiaco à Casablanca"
+              width={1408}
+              height={1008}
+              loading="lazy"
+              className="h-[460px] w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ZONE D'INTERVENTION */}
+      <section className="section-y bg-surface">
+        <div className="shell">
+          <Reveal>
+            <p className="eyebrow">Zone d'intervention</p>
+            <h2 className="mt-3 max-w-2xl text-3xl sm:text-4xl">
+              Basés à Casablanca, au service des praticiens du Royaume
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                title: "Casablanca et région",
+                text: "Notre zone historique : échanges directs, rendez-vous sur site et réactivité maximale.",
+              },
+              {
+                title: "Grandes villes du Maroc",
+                text: "Rabat, Marrakech, Tanger, Fès, Agadir : nous livrons les structures de soin partout dans le pays.",
+              },
+              {
+                title: "Sourcing international",
+                text: "Nos approvisionnements s'appuient sur des marques reconnues à l'international, importées par nos soins.",
+              },
+            ].map((z, i) => (
+              <Reveal key={z.title} delay={i * 0.1}>
+                <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-soft">
+                  <MapPin className="size-5 text-navy-soft" strokeWidth={1.6} />
+                  <h3 className="mt-4 text-base text-navy">{z.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{z.text}</p>
                 </div>
               </Reveal>
             ))}

@@ -1,11 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import {
+  ArrowRight,
+  Boxes,
+  Check,
+  ClipboardList,
+  PackageCheck,
+  Truck,
+  Wrench,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import logistiqueImage from "@/assets/consommables-hygiene.jpg";
 import { process, services, type Service } from "@/data/services";
+import { faqServices } from "@/data/faq";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/Cta";
+import { Faq } from "@/components/site/Faq";
 import { Reveal } from "@/components/site/motion-primitives";
 
 export const Route = createFileRoute("/services")({
@@ -79,6 +90,103 @@ function Services() {
           </div>
         </div>
       </section>
+
+      {/* SERVICES COMPLEMENTAIRES */}
+      <section className="section-y bg-background">
+        <div className="shell">
+          <Reveal>
+            <p className="eyebrow">Services complémentaires</p>
+            <h2 className="mt-3 max-w-2xl text-3xl sm:text-4xl">
+              Les prestations qui accompagnent chaque projet
+            </h2>
+            <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">
+              Au-delà de la fourniture du matériel, plusieurs prestations facilitent la vie des
+              structures que nous équipons.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: ClipboardList,
+                title: "Étude d'aménagement",
+                text: "Nous vérifions la cohérence entre l'équipement envisagé et l'espace réellement disponible.",
+              },
+              {
+                icon: PackageCheck,
+                title: "Devis détaillé",
+                text: "Une proposition écrite, ligne par ligne, avec les délais estimés pour chaque poste.",
+              },
+              {
+                icon: Truck,
+                title: "Livraison coordonnée",
+                text: "La mise à disposition du matériel est planifiée avec vous pour limiter l'interruption d'activité.",
+              },
+              {
+                icon: Wrench,
+                title: "Assistance technique",
+                text: "Nous orientons vers la bonne solution en cas de difficulté sur un équipement fourni.",
+              },
+            ].map((s, i) => (
+              <Reveal key={s.title} delay={i * 0.1}>
+                <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-soft transition-shadow duration-300 hover:shadow-lift">
+                  <span className="flex size-12 items-center justify-center rounded-xl bg-sky-pale/60 text-navy transition-transform duration-500 group-hover:-rotate-6">
+                    <s.icon className="size-6" strokeWidth={1.5} />
+                  </span>
+                  <h3 className="mt-6 text-lg text-navy">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LOGISTIQUE */}
+      <section className="section-y overflow-hidden bg-surface">
+        <div className="shell grid items-center gap-14 lg:grid-cols-2">
+          <Reveal>
+            <p className="eyebrow">Approvisionnement</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl">
+              Des consommables disponibles quand vous en avez besoin
+            </h2>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Une rupture de gants, de champs de protection ou de sachets de stérilisation
+              désorganise une journée entière de soins. Nous suivons les besoins récurrents des
+              structures que nous équipons afin d'anticiper les commandes plutôt que de les subir.
+            </p>
+            <ul className="mt-8 space-y-4">
+              {[
+                "Suivi des références consommées régulièrement par votre structure",
+                "Commandes groupées pour simplifier la gestion administrative",
+                "Alertes en amont sur les références à recommander",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-sm text-navy">
+                  <Boxes className="mt-0.5 size-4 shrink-0 text-leaf" strokeWidth={1.8} />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <div className="overflow-hidden rounded-3xl shadow-lift">
+            <img
+              src={logistiqueImage}
+              alt="Consommables d'hygiène et de protection stockés dans une clinique"
+              width={1200}
+              height={912}
+              loading="lazy"
+              className="h-[440px] w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+        </div>
+      </section>
+
+      <Faq
+        items={faqServices}
+        title="Vos questions sur notre accompagnement"
+        intro="Quelques repères sur la façon dont nous travaillons avec les praticiens."
+      />
 
       <CtaBand />
     </>

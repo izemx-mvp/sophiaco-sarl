@@ -7,9 +7,16 @@ import galerie1 from "@/assets/hero-dental-office.jpg";
 import galerie2 from "@/assets/labo-centrifugeuse.jpg";
 import galerie3 from "@/assets/cabinet-medical.jpg";
 import galerie4 from "@/assets/instruments-rotatifs.jpg";
+import galerie5 from "@/assets/imagerie-dentaire.jpg";
+import galerie6 from "@/assets/consommables-hygiene.jpg";
+import galerie7 from "@/assets/mobilier-medical.jpg";
+import galerie8 from "@/assets/analyseur-labo.jpg";
+import provenanceImage from "@/assets/consommables-dentaires.jpg";
 import { univers, type Univers } from "@/data/products";
+import { faqProduits } from "@/data/faq";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/Cta";
+import { Faq } from "@/components/site/Faq";
 import { Reveal } from "@/components/site/motion-primitives";
 
 export const Route = createFileRoute("/produits")({
@@ -40,6 +47,15 @@ const galerie = [
     src: galerie4,
     alt: "Instruments rotatifs dentaires",
     legend: "Instruments dentaires",
+    wide: true,
+  },
+  { src: galerie5, alt: "Unité d'imagerie dentaire", legend: "Imagerie dentaire", tall: true },
+  { src: galerie6, alt: "Consommables d'hygiène rangés", legend: "Hygiène et protection" },
+  { src: galerie7, alt: "Mobilier médical et chariot d'instruments", legend: "Mobilier médical" },
+  {
+    src: galerie8,
+    alt: "Automate d'analyse en laboratoire",
+    legend: "Équipements d'analyse",
     wide: true,
   },
 ];
@@ -136,6 +152,69 @@ function Produits() {
           </div>
         </div>
       </section>
+
+      {/* PROVENANCE */}
+      <section className="section-y bg-background">
+        <div className="shell grid items-center gap-14 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl shadow-lift">
+            <img
+              src={provenanceImage}
+              alt="Consommables dentaires prêts à être distribués"
+              width={1200}
+              height={912}
+              loading="lazy"
+              className="h-[420px] w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+
+          <Reveal>
+            <p className="eyebrow">Provenance et sélection</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl">
+              Des marques reconnues, sélectionnées pour l'usage quotidien
+            </h2>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Nous importons directement le matériel que nous distribuons. Cette maîtrise de la
+              chaîne nous permet de sélectionner des références éprouvées en cabinet, de vérifier
+              leur conformité et d'assurer la disponibilité des consommables associés dans le temps.
+            </p>
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                {
+                  title: "Sélection",
+                  text: "Des équipements retenus pour leur robustesse et leur ergonomie réelle.",
+                },
+                {
+                  title: "Importation",
+                  text: "Un sourcing international assuré en interne, sans intermédiaire superflu.",
+                },
+                {
+                  title: "Disponibilité",
+                  text: "Les consommables associés restent accessibles après l'installation.",
+                },
+                {
+                  title: "Conseil",
+                  text: "Une recommandation adaptée à votre pratique, pas au catalogue le plus large.",
+                },
+              ].map((p, i) => (
+                <Reveal as="li" key={p.title} delay={0.08 * i}>
+                  <span className="block rounded-xl border border-border bg-surface p-5">
+                    <span className="block font-display font-bold text-navy">{p.title}</span>
+                    <span className="mt-1.5 block text-sm leading-relaxed text-muted-foreground">
+                      {p.text}
+                    </span>
+                  </span>
+                </Reveal>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      <Faq
+        items={faqProduits}
+        title="Vos questions sur nos produits"
+        intro="Cette page présente nos familles de produits, pas un catalogue tarifé : chaque configuration se construit avec vous."
+      />
 
       <CtaBand />
     </>
