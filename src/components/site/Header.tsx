@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Phone, X } from "lucide-react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
-import logo from "@/assets/sophiaco-logo.png.asset.json";
+import logo from "@/assets/sophiaco-logo.png";
 import { company, nav } from "@/data/company";
 import { CtaLink } from "./Cta";
 
@@ -43,7 +43,7 @@ export function Header() {
         >
           {/* Logo fourni par le client, utilisé tel quel (PNG), redimensionné en CSS uniquement */}
           <img
-            src={logo.url}
+            src={logo}
             alt="Sophiaco"
             className={`w-auto transition-all duration-300 ${compact ? "h-9" : "h-11"}`}
           />

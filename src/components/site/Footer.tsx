@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Clock } from "lucide-react";
-import logo from "@/assets/sophiaco-logo.png.asset.json";
+import logo from "@/assets/sophiaco-logo.png";
 import { company, nav } from "@/data/company";
 
 export function Footer() {
@@ -9,7 +9,7 @@ export function Footer() {
       <div className="shell grid gap-12 py-16 md:grid-cols-3">
         <div>
           {/* Logo fourni par le client, utilisé tel quel (PNG) */}
-          <img src={logo.url} alt="Sophiaco" className="h-14 w-auto" loading="lazy" />
+          <img src={logo} alt="Sophiaco" className="h-14 w-auto" loading="lazy" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
             {company.legalName} — société marocaine créée en {company.foundedYear}, basée à
             Casablanca. {company.tagline}
