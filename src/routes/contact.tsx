@@ -17,6 +17,7 @@ import { z } from "zod";
 import contactImage from "@/assets/bureau-conseil.jpg";
 import { company } from "@/data/company";
 import { faqContact } from "@/data/faq";
+import heroImage from "@/assets/hero-contact.jpg";
 import { PageHero } from "@/components/site/PageHero";
 import { Faq } from "@/components/site/Faq";
 import { Reveal } from "@/components/site/motion-primitives";
@@ -106,6 +107,7 @@ function Contact() {
   return (
     <>
       <PageHero
+        image={heroImage}
         crumb="Contact"
         title="Contactez-nous"
         subtitle="Un projet d'équipement, une question technique ou un besoin de réapprovisionnement ? Échangeons avec notre équipe à Casablanca."

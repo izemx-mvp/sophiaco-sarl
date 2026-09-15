@@ -14,6 +14,7 @@ import { Link } from "@tanstack/react-router";
 import logistiqueImage from "@/assets/consommables-hygiene.jpg";
 import { process, services, type Service } from "@/data/services";
 import { faqServices } from "@/data/faq";
+import heroImage from "@/assets/hero-services.jpg";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/Cta";
 import { Faq } from "@/components/site/Faq";
@@ -49,6 +50,7 @@ function Services() {
   return (
     <>
       <PageHero
+        image={heroImage}
         crumb="Services"
         title="Nos services"
         subtitle="Bien plus qu'un fournisseur : un accompagnement global des professionnels de santé, du choix de l'équipement jusqu'au suivi dans la durée."
