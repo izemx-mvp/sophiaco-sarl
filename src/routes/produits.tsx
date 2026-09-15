@@ -49,15 +49,10 @@ const galerie = [
     legend: "Instruments dentaires",
     wide: true,
   },
-  { src: galerie5, alt: "Unité d'imagerie dentaire", legend: "Imagerie dentaire", tall: true },
+  { src: galerie5, alt: "Unité d'imagerie dentaire", legend: "Imagerie dentaire" },
   { src: galerie6, alt: "Consommables d'hygiène rangés", legend: "Hygiène et protection" },
   { src: galerie7, alt: "Mobilier médical et chariot d'instruments", legend: "Mobilier médical" },
-  {
-    src: galerie8,
-    alt: "Automate d'analyse en laboratoire",
-    legend: "Équipements d'analyse",
-    wide: true,
-  },
+  { src: galerie8, alt: "Automate d'analyse en laboratoire", legend: "Équipements d'analyse" },
 ];
 
 function Produits() {
