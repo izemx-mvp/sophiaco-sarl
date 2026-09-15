@@ -262,12 +262,14 @@ function Contact() {
                 className="overflow-hidden rounded-3xl border border-border shadow-soft"
               >
                 <iframe
-                  title="Localisation de Sophiaco à Casablanca"
-                  src="https://www.google.com/maps?q=400%20Bd%20Zerktouni%20Business%20Plaza%20Casablanca&output=embed"
+                  title="Localisation de Sophiaco S.A.R.L. à Casablanca"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.1741747685373!2d-7.644662299999999!3d33.600785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2afb3900001%3A0xf55c72b8e8d4577d!2sSophiaco%20S.A.R.L.!5e0!3m2!1sfr!2sma!4v1789478780886!5m2!1sfr!2sma"
                   loading="lazy"
+                  allowFullScreen
                   className="h-[340px] w-full border-0"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="strict-origin-when-cross-origin"
                 />
+
               </motion.div>
             </Reveal>
           </div>
