@@ -55,11 +55,13 @@ export function Header() {
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.to === "/" }}
-              activeProps={{ className: "text-navy" }}
+              activeProps={{ className: compact ? "text-navy" : "text-white" }}
               inactiveProps={{
-                className: compact ? "text-foreground/70" : "text-navy/80",
+                className: compact ? "text-foreground/70" : "text-white/75",
               }}
-              className="relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:text-navy"
+              className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                compact ? "hover:text-navy" : "hover:text-white"
+              }`}
             >
               {item.label}
             </Link>
@@ -70,9 +72,15 @@ export function Header() {
           {/* À CONFIRMER AVEC LE CLIENT — numéro relevé sur annuaire public */}
           <a
             href={company.phoneHref}
-            className="group flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-navy transition-colors hover:text-navy-soft"
+            className={`group flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold transition-colors ${
+              compact ? "text-navy hover:text-navy-soft" : "text-white hover:text-sky-pale"
+            }`}
           >
-            <span className="relative flex size-8 items-center justify-center rounded-full bg-sky-pale/70">
+            <span
+              className={`relative flex size-8 items-center justify-center rounded-full ${
+                compact ? "bg-sky-pale/70 text-navy" : "bg-white/15 text-white"
+              }`}
+            >
               <span
                 className="absolute inset-0 animate-ping rounded-full bg-leaf/25 [animation-duration:3s]"
                 aria-hidden
