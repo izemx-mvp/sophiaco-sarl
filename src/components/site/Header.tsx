@@ -34,12 +34,18 @@ export function Header() {
           compact ? "py-2.5" : "py-4"
         }`}
       >
-        <Link to="/" className="flex items-center" aria-label={`${company.name} — accueil`}>
+        <Link
+          to="/"
+          className={`flex items-center rounded-xl transition-all duration-300 ${
+            compact ? "" : "bg-white/90 px-3 py-1.5 shadow-soft backdrop-blur-sm"
+          }`}
+          aria-label={`${company.name} — accueil`}
+        >
           {/* Logo fourni par le client, utilisé tel quel (PNG), redimensionné en CSS uniquement */}
           <img
             src={logo.url}
             alt="Sophiaco"
-            className={`w-auto transition-all duration-300 ${compact ? "h-9" : "h-12"}`}
+            className={`w-auto transition-all duration-300 ${compact ? "h-9" : "h-11"}`}
           />
         </Link>
 
