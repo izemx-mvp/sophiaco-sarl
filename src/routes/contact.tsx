@@ -1,10 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useState, type ReactNode } from "react";
-import { Check, Clock, Loader2, MapPin, Phone, Send, UserRound } from "lucide-react";
+import {
+  Check,
+  Clock,
+  FileText,
+  Loader2,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Send,
+  Truck,
+  UserRound,
+} from "lucide-react";
 import { z } from "zod";
+import contactImage from "@/assets/bureau-conseil.jpg";
 import { company } from "@/data/company";
+import { faqContact } from "@/data/faq";
 import { PageHero } from "@/components/site/PageHero";
+import { Faq } from "@/components/site/Faq";
 import { Reveal } from "@/components/site/motion-primitives";
 
 export const Route = createFileRoute("/contact")({
@@ -257,6 +271,95 @@ function Contact() {
           </div>
         </div>
       </section>
+
+      {/* CE QUI SE PASSE ENSUITE */}
+      <section className="section-y bg-surface">
+        <div className="shell">
+          <Reveal>
+            <p className="eyebrow">Après votre message</p>
+            <h2 className="mt-3 max-w-2xl text-3xl sm:text-4xl">
+              Ce qui se passe une fois votre demande envoyée
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                icon: MessageSquare,
+                step: "01",
+                title: "Nous vous rappelons",
+                text: "Un échange court permet de préciser votre pratique, votre structure et vos priorités.",
+              },
+              {
+                icon: FileText,
+                step: "02",
+                title: "Nous chiffrons",
+                text: "Vous recevez une proposition écrite avec les références retenues et les délais estimés.",
+              },
+              {
+                icon: Truck,
+                step: "03",
+                title: "Nous livrons et suivons",
+                text: "La livraison est planifiée avec vous, et nous restons joignables ensuite.",
+              },
+            ].map((s, i) => (
+              <Reveal key={s.step} delay={i * 0.12}>
+                <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-soft">
+                  <div className="flex items-center justify-between">
+                    <span className="flex size-12 items-center justify-center rounded-xl bg-sky-pale/60 text-navy">
+                      <s.icon className="size-6" strokeWidth={1.5} />
+                    </span>
+                    <span className="font-display text-2xl font-bold text-navy/15">{s.step}</span>
+                  </div>
+                  <h3 className="mt-6 text-lg text-navy">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VENIR NOUS VOIR */}
+      <section className="section-y bg-background">
+        <div className="shell grid items-center gap-14 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl shadow-lift">
+            <img
+              src={contactImage}
+              alt="Espace de réception des bureaux Sophiaco à Casablanca"
+              width={1408}
+              height={1008}
+              loading="lazy"
+              className="h-[400px] w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+          <Reveal>
+            <p className="eyebrow">Nous rencontrer</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl">Un échange de vive voix, à Casablanca</h2>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Pour un projet d'équipement complet, rien ne remplace une discussion posée. Prenez
+              rendez-vous par téléphone : {company.contactName} prépare votre dossier en amont afin
+              que l'échange soit utile dès la première minute.
+            </p>
+            {/* À CONFIRMER AVEC LE CLIENT — horaires indicatifs */}
+            <p className="mt-4 text-sm text-muted-foreground">
+              Nos bureaux sont ouverts {company.hours.toLowerCase()}.
+            </p>
+            <a
+              href={company.phoneHref}
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-shadow hover:shadow-lift"
+            >
+              <Phone className="size-4" strokeWidth={1.75} />
+              Appeler le {company.phone}
+            </a>
+          </Reveal>
+        </div>
+      </section>
+
+      <Faq
+        items={faqContact}
+        title="Avant de nous écrire"
+        intro="Quelques précisions pour que votre demande soit traitée le plus rapidement possible."
+      />
     </>
   );
 }

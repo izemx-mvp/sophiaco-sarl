@@ -12,9 +12,15 @@ import {
   ArrowRight,
 } from "lucide-react";
 import heroImage from "@/assets/hero-dental-office.jpg";
+import approcheImage from "@/assets/installation-materiel.jpg";
+import equipement1 from "@/assets/imagerie-dentaire.jpg";
+import equipement2 from "@/assets/consommables-hygiene.jpg";
+import equipement3 from "@/assets/analyseur-labo.jpg";
 import { company } from "@/data/company";
 import { univers } from "@/data/products";
+import { faqHome } from "@/data/faq";
 import { CtaBand, CtaLink } from "@/components/site/Cta";
+import { Faq } from "@/components/site/Faq";
 import { Counter, Reveal, TiltCard } from "@/components/site/motion-primitives";
 
 export const Route = createFileRoute("/")({
@@ -298,6 +304,119 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* NOTRE APPROCHE */}
+      <section className="section-y overflow-hidden bg-surface">
+        <div className="shell grid items-center gap-14 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl shadow-lift lg:order-2">
+            <img
+              src={approcheImage}
+              alt="Réglage d'un fauteuil dentaire dans un cabinet équipé par Sophiaco"
+              width={1408}
+              height={1008}
+              loading="lazy"
+              className="h-[440px] w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
+
+          <Reveal>
+            <p className="eyebrow">Notre approche</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl">
+              Le bon équipement, choisi avec vous, pas vendu sur catalogue
+            </h2>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Un plateau technique n'est jamais neutre : il conditionne le confort du praticien, la
+              durée des interventions et la sérénité du patient. Nous partons donc de votre
+              pratique réelle avant de proposer une référence.
+            </p>
+            <ul className="mt-8 space-y-5">
+              {[
+                {
+                  title: "Comprendre avant de proposer",
+                  text: "Volume d'activité, spécialité, surface disponible, contraintes électriques et budget : chaque paramètre orienté le choix du matériel.",
+                },
+                {
+                  title: "Un périmètre complet",
+                  text: "Équipement lourd, petit matériel, consommables et hygiène : vous ne multipliez pas les fournisseurs pour une même structure.",
+                },
+                {
+                  title: "Une relation qui dure",
+                  text: "Nous suivons les structures que nous équipons année après année, pour leurs renouvellements comme pour leurs urgences.",
+                },
+              ].map((b, i) => (
+                <Reveal as="li" key={b.title} delay={0.1 + i * 0.1}>
+                  <span className="block border-l-2 border-leaf/60 pl-5">
+                    <span className="block font-display font-bold text-navy">{b.title}</span>
+                    <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
+                      {b.text}
+                    </span>
+                  </span>
+                </Reveal>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CE QUE NOUS EQUIPONS */}
+      <section className="section-y bg-background">
+        <div className="shell">
+          <Reveal>
+            <p className="eyebrow">Ce que nous équipons</p>
+            <h2 className="mt-3 max-w-2xl text-3xl sm:text-4xl">
+              Du cabinet individuel à la structure pluridisciplinaire
+            </h2>
+            <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">
+              Chaque type de structure a ses priorités. Nous adaptons la proposition à l'échelle du
+              projet, qu'il s'agisse d'une première installation ou d'un renouvellement partiel.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {[
+              {
+                image: equipement1,
+                title: "Cabinets dentaires",
+                text: "Fauteuils, unités de soin, instruments rotatifs, imagerie et consommables du quotidien.",
+              },
+              {
+                image: equipement3,
+                title: "Laboratoires d'analyse",
+                text: "Équipements d'analyse, instruments de mesure, verrerie et petits appareils de paillasse.",
+              },
+              {
+                image: equipement2,
+                title: "Cliniques et cabinets médicaux",
+                text: "Mobilier médical, instruments de consultation, stérilisation et protections à usage unique.",
+              },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 0.1}>
+                <article className="group h-full overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-shadow duration-300 hover:shadow-lift">
+                  <div className="overflow-hidden">
+                    <img
+                      src={c.image}
+                      alt={c.title}
+                      width={1200}
+                      height={912}
+                      loading="lazy"
+                      className="h-52 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg text-navy">{c.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Faq
+        items={faqHome}
+        intro={`Les questions que nous posent le plus souvent les praticiens avant un premier échange. Pour toute autre demande, appelez-nous au ${company.phone}.`}
+      />
 
       <CtaBand />
     </>
