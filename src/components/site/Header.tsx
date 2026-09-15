@@ -91,14 +91,18 @@ export function Header() {
           </a>
 
           <span className="hidden md:inline">
-            <CtaLink to="/contact">Demander un devis</CtaLink>
+            <CtaLink to="/contact" variant={compact ? "solid" : "light"}>
+              Demander un devis
+            </CtaLink>
           </span>
 
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-            className="flex size-10 items-center justify-center rounded-full border border-navy/15 text-navy lg:hidden"
+            className={`flex size-10 items-center justify-center rounded-full border lg:hidden ${
+              compact ? "border-navy/15 text-navy" : "border-white/40 text-white"
+            }`}
           >
             {open ? (
               <X className="size-5" strokeWidth={1.75} />
