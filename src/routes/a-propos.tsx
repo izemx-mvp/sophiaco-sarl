@@ -7,6 +7,7 @@ import chiffresImage from "@/assets/casablanca-business.jpg";
 import bureauImage from "@/assets/bureau-conseil.jpg";
 import { company } from "@/data/company";
 import { team, timeline, values } from "@/data/team";
+import heroImage from "@/assets/hero-a-propos.jpg";
 import { PageHero } from "@/components/site/PageHero";
 import { CtaBand } from "@/components/site/Cta";
 import { Counter, Reveal, TiltCard } from "@/components/site/motion-primitives";
@@ -50,6 +51,7 @@ function About() {
   return (
     <>
       <PageHero
+        image={heroImage}
         crumb="À propos"
         title="À propos de Sophiaco"
         subtitle={`${company.legalName}, société marocaine créée en ${company.foundedYear} et basée à Casablanca, dédiée à l'équipement des professionnels de santé.`}
